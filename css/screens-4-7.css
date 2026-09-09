@@ -171,7 +171,4 @@
 }
 .download-success-msg svg { width: 18px; height: 18px; }
 
-@media (max-width: 768px) {
-  .chart-layout, .summary-details-grid { grid-template-columns: 1fr; }
-  .metier-card { flex-direction: column; align-items: flex-start; }
-}
+

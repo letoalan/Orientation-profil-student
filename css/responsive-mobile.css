@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @file responsive-mobile.css
  * @description Optimisations mobiles avancées, safe-areas, ergonomie tactile WCAG (44px)
  * et adaptation responsive des 7 écrans pour smartphones (iOS/Android).
@@ -94,16 +94,77 @@
     user-select: none; -webkit-user-select: none; touch-action: manipulation;
   }
 
-  /* Écran 4 */
-  .chart-layout { grid-template-columns: 1fr; gap: 18px; }
-  .chart-wrapper { min-height: 270px; height: 270px; padding: 8px; }
+  /* Écran 4 - Radar & Scores */
+  .chart-layout { grid-template-columns: 1fr; gap: 20px; }
+  .chart-wrapper {
+    min-height: 290px;
+    height: 290px;
+    padding: 10px 6px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .scores-summary {
+    width: 100%;
+  }
+  .scores-summary h3 {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+  }
+  .score-bars-list {
+    gap: 8px;
+  }
+  .score-bar-info {
+    font-size: 0.85rem;
+  }
 
-  /* Écran 5 */
-  .metier-card { flex-direction: column; align-items: stretch; gap: 12px; padding: 14px; }
-  .metier-opinion-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%; }
+  /* Écran 5 - Métiers & Badges */
+  .profile-code-card {
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+  .code-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .code-badge-large {
+    font-size: 0.78rem;
+    padding: 4px 10px;
+    line-height: 1.3;
+    white-space: normal;
+    text-align: center;
+  }
+  .qualitative-text {
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+  .metier-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px;
+  }
+  .metier-name {
+    font-size: 0.94rem;
+    line-height: 1.35;
+  }
+  .metier-opinion-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    width: 100%;
+  }
   .btn-opinion {
-    min-height: 40px; display: flex; align-items: center; justify-content: center;
-    padding: 8px 4px; font-size: 0.8rem; user-select: none; -webkit-user-select: none;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 4px;
+    font-size: 0.78rem;
+    text-align: center;
+    user-select: none;
+    -webkit-user-select: none;
     touch-action: manipulation;
   }
 

@@ -53,6 +53,14 @@ export function renderRadarChart() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      layout: {
+        padding: {
+          top: 8,
+          bottom: 8,
+          left: 6,
+          right: 6
+        }
+      },
       scales: {
         r: {
           min: 0,
@@ -61,8 +69,16 @@ export function renderRadarChart() {
           grid: { color: '#e2e8f0' },
           angleLines: { color: '#cbd5e1' },
           pointLabels: {
+            callback: (label) => {
+              // Sur les petits écrans de smartphones (< 500px), afficher le nom et le code sur 2 lignes pour éviter tout rognage
+              if (window.innerWidth < 500) {
+                const parts = label.split(' (');
+                return parts.length === 2 ? [parts[0], `(${parts[1]}`] : label;
+              }
+              return label;
+            },
             font: {
-              size: window.innerWidth < 480 ? 10 : 12,
+              size: window.innerWidth < 400 ? 9.5 : window.innerWidth < 640 ? 11 : 12,
               weight: '700',
               family: 'Plus Jakarta Sans'
             },
