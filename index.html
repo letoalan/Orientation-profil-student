@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Profil en 6 Couleurs — Orientation RIASEC</title>
+  <meta name="description" content="Découvre ton profil d'orientation RIASEC en 6 couleurs, visualise ton radar et télécharge ton export JSON.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-logo"><span class="dot dot-r"></span><span class="dot dot-i"></span><span class="dot dot-a"></span><span class="dot dot-s"></span><span class="dot dot-e"></span><span class="dot dot-c"></span></div>
+        <div class="brand-text"><h1>Profil en 6 Couleurs</h1><p class="subtitle">Boussole d'orientation RIASEC élève</p></div>
+      </div>
+      <div class="badge-mode">Élève</div>
+    </header>
+
+    <nav class="stepper-nav" aria-label="Progression">
+      <div class="progress-track"><div class="progress-bar" id="progressBar" style="width: 14.28%;"></div></div>
+      <div class="steps-indicators" id="stepsIndicators">
+        <button type="button" class="step-indicator active" data-step="1"><span class="step-num">1</span><span>Identité</span></button>
+        <button type="button" class="step-indicator" data-step="2"><span class="step-num">2</span><span>Papier</span></button>
+        <button type="button" class="step-indicator" data-step="3"><span class="step-num">3</span><span>Affinage</span></button>
+        <button type="button" class="step-indicator" data-step="4"><span class="step-num">4</span><span>Radar</span></button>
+        <button type="button" class="step-indicator" data-step="5"><span class="step-num">5</span><span>Métiers</span></button>
+        <button type="button" class="step-indicator" data-step="6"><span class="step-num">6</span><span>Parents</span></button>
+        <button type="button" class="step-indicator" data-step="7"><span class="step-num">7</span><span>Export</span></button>
+      </div>
+    </nav>
+
+    <main class="main-card">
+      <!-- ÉCRAN 1 -->
+      <section class="screen-view active" id="screen-1">
+        <div class="screen-header">
+          <span class="step-tag">Étape 1 sur 7</span>
+          <h2>Qui es-tu ?</h2>
+          <p class="description">Ces informations permettent d'identifier ton profil lors de la remise au professeur. 100% local.</p>
+        </div>
+        <form class="form-grid" onsubmit="return false;">
+          <div class="input-group"><label for="input-nom">Nom <span class="req">*</span></label><input type="text" id="input-nom" required placeholder="Ex: Dupont"></div>
+          <div class="input-group"><label for="input-prenom">Prénom <span class="req">*</span></label><input type="text" id="input-prenom" required placeholder="Ex: Lucas"></div>
+          <div class="input-group full-width"><label for="input-classe">Classe <span class="req">*</span></label><input type="text" id="input-classe" required placeholder="Ex: 1ère Générale 2"></div>
+        </form>
+        <div class="notice-box">
+          <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <div><strong>100% Côté Client</strong><p>Aucune donnée n'est transmise en ligne. Tout est conservé dans ton navigateur.</p></div>
+        </div>
+        <div class="screen-actions"><div></div><button type="button" class="btn btn-primary" id="btn-next-1">Continuer <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
+      </section>
+
+      <!-- ÉCRAN 2 -->
+      <section class="screen-view" id="screen-2">
+        <div class="screen-header">
+          <span class="step-tag">Étape 2 sur 7</span>
+          <h2>Tes résultats de la fiche papier</h2>
+          <p class="description">Reporte le score de 0 à 4 obtenu pour chaque pôle lors de l'activité en classe.</p>
+        </div>
+        <div class="poles-input-grid" id="polesInputGrid"></div>
+        <div class="screen-actions">
+          <button type="button" class="btn btn-secondary" id="btn-prev-2">Retour</button>
+          <button type="button" class="btn btn-primary" id="btn-next-2">Passer à l'affinage</button>
+        </div>
+      </section>
+
+      <!-- ÉCRAN 3 -->
+      <section class="screen-view" id="screen-3">
+        <div class="screen-header">
+          <span class="step-tag">Étape 3 sur 7</span>
+          <h2>Affinage de tes préférences (12 questions)</h2>
+          <p class="description">Donne ton degré d'accord de 1 (Pas d'accord) à 5 (Tout à fait d'accord).</p>
+        </div>
+        <div class="scale-legend"><span>1 = Pas du tout</span><span>2 = Plutôt pas</span><span>3 = Neutre</span><span>4 = Plutôt oui</span><span>5 = Tout à fait</span></div>
+        <div class="questions-container" id="questionsContainer"></div>
+        <div class="screen-actions">
+          <button type="button" class="btn btn-secondary" id="btn-prev-3">Retour</button>
+          <button type="button" class="btn btn-primary" id="btn-next-3">Générer mon radar</button>
+        </div>
+      </section>
+
+      <!-- ÉCRAN 4 -->
+      <section class="screen-view" id="screen-4">
+        <div class="screen-header">
+          <span class="step-tag">Étape 4 sur 7</span>
+          <h2>Ton profil en 6 couleurs</h2>
+          <p class="description">Voici ton radar RIASEC normalisé sur 10, combinant fiche papier et questionnaire.</p>
+        </div>
+        <div class="chart-layout">
+          <div class="chart-wrapper"><canvas id="radarChart"></canvas></div>
+          <div class="scores-summary"><h3>Scores détaillés (/10)</h3><div class="score-bars-list" id="scoreBarsList"></div></div>
+        </div>
+        <div class="screen-actions">
+          <button type="button" class="btn btn-secondary" id="btn-prev-4">Modifier mes réponses</button>
+          <button type="button" class="btn btn-primary" id="btn-next-4">Voir les métiers suggérés</button>
+        </div>
+      </section>
+
+      <!-- ÉCRAN 5 -->
+      <section class="screen-view" id="screen-5">
+        <div class="screen-header">
+          <span class="step-tag">Étape 5 sur 7</span>
+          <h2>Pistes de métiers & exploration</h2>
+          <p class="description">Découvre les pistes associées à tes dominantes et donne ton avis.</p>
+        </div>
+        <div class="profile-code-card">
+          <div class="code-badges" id="profileCodeBadges"></div>
+          <p class="qualitative-text" id="qualitativeAnalysisText">Analyse...</p>
+        </div>
+        <div class="metiers-cards-list" id="metiersCardsList"></div>
+        <div class="screen-actions">
+          <button type="button" class="btn btn-secondary" id="btn-prev-5">Retour au radar</button>
+          <button type="button" class="btn btn-primary" id="btn-next-5">Étape parents</button>
+        </div>
+      </section>
+
+      <!-- ÉCRAN 6 -->
+      <section class="screen-view" id="screen-6">
+        <div class="screen-header">
+          <span class="step-tag">Étape 6 sur 7</span>
+          <h2>Le regard de tes proches</h2>
+          <p class="description instruction-highlight"><em>« Pose à tes parents (ou un adulte) les questions ci-dessous et reporte leurs réponses. »</em></p>
+        </div>
+        <form class="parent-form-grid" onsubmit="return false;">
+          <div class="parent-field">
+            <label class="parent-label">1. Qui a répondu ? <span class="req">*</span></label>
+            <div class="radio-pill-group">
+              <label class="pill-radio"><input type="radio" name="parent_lien" value="Mère" checked><span>Mère</span></label>
+              <label class="pill-radio"><input type="radio" name="parent_lien" value="Père"><span>Père</span></label>
+              <label class="pill-radio"><input type="radio" name="parent_lien" value="Les deux"><span>Les deux</span></label>
+              <label class="pill-radio"><input type="radio" name="parent_lien" value="Autre"><span>Autre</span></label>
+            </div>
+            <input type="text" id="parent-lien-autre" placeholder="Précise (ex: tuteur...)" style="display:none; margin-top:8px;">
+          </div>
+          <div class="parent-field">
+            <label class="parent-label" for="parent-traits">2. Deux traits de caractère qui te décrivent le mieux <span class="req">*</span></label>
+            <input type="text" id="parent-traits" required placeholder="Ex: Curieux et réfléchi">
+          </div>
+          <div class="parent-field">
+            <label class="parent-label">3. Projet cohérent avec ton quotidien ? <span class="req">*</span></label>
+            <div class="radio-pill-group">
+              <label class="pill-radio"><input type="radio" name="parent_coherence" value="oui" checked><span>Oui</span></label>
+              <label class="pill-radio"><input type="radio" name="parent_coherence" value="non"><span>Non</span></label>
+              <label class="pill-radio"><input type="radio" name="parent_coherence" value="je_ne_sais_pas"><span>Je ne sais pas</span></label>
+            </div>
+            <textarea id="parent-coherence-pourquoi" rows="2" placeholder="Pourquoi ?" style="margin-top:8px;"></textarea>
+          </div>
+          <div class="parent-field"><label class="parent-label" for="parent-inquietude">4. Inquiétude ou réserve ? <span class="opt">(facultatif)</span></label><textarea id="parent-inquietude" rows="2" placeholder="Ex: Durée des études..."></textarea></div>
+          <div class="parent-field"><label class="parent-label" for="parent-domaine">5. Autre activité ou talent remarqué ?</label><textarea id="parent-domaine" rows="2" placeholder="Ex: Montage vidéo, animation..."></textarea></div>
+        </form>
+        <div class="screen-actions"><button type="button" class="btn btn-secondary" id="btn-prev-6">Retour</button><button type="button" class="btn btn-primary" id="btn-next-6">Finaliser & Exporter</button></div>
+      </section>
+
+      <!-- ÉCRAN 7 -->
+      <section class="screen-view" id="screen-7">
+        <div class="screen-header">
+          <span class="step-tag">Étape finale</span>
+          <h2>Ton profil est prêt ! 🎉</h2>
+          <p class="description">Télécharge ton fichier JSON pour le transmettre à ton enseignant.</p>
+        </div>
+        <div class="export-summary-card">
+          <div class="summary-header">
+            <div><span class="student-name-display" id="summaryStudentName">Élève</span><span class="student-class-display" id="summaryStudentClass">Classe</span></div>
+            <div class="summary-code-display" id="summaryProfileCode">RIA</div>
+          </div>
+          <div class="summary-details-grid">
+            <div class="summary-box"><h4>Métiers prioritaires</h4><ul id="summaryMetiersList" class="summary-list"></ul></div>
+            <div class="summary-box"><h4>Avis famille</h4><p id="summaryParentReview" class="summary-text-muted"></p></div>
+          </div>
+        </div>
+        <div class="download-cta-zone">
+          <button type="button" class="btn btn-download" id="btnDownloadJson">
+            <svg class="btn-icon-large" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <div><strong>Télécharger mon profil (.JSON)</strong><small>nom_prenom_profil.json</small></div>
+          </button>
+          <div class="download-success-msg" id="downloadSuccessMsg" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Fichier JSON téléchargé ! Remets-le à ton professeur.</span>
+          </div>
+        </div>
+        <div class="screen-actions">
+          <button type="button" class="btn btn-secondary" id="btn-prev-7">Modifier</button>
+          <button type="button" class="btn btn-outline" id="btnRestart">Recommencer</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer"><p>Application "Profil en 6 couleurs" — Méthode RIASEC John L. Holland. 100% Côté Client.</p></footer>
+  </div>
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>

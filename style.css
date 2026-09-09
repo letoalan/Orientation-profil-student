@@ -1,0 +1,10 @@
+/**
+ * @file style.css
+ * @description Feuille de style principale assemblant les modules CSS.
+ * Documentation wiki : docs/wiki/design-system.md
+ */
+
+@import './css/variables.css';
+@import './css/layout.css';
+@import './css/screens-1-3.css';
+@import './css/screens-4-7.css';

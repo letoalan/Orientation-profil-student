@@ -1,0 +1,177 @@
+/**
+ * @file screens-4-7.css
+ * @description Styles pour le radar (Écran 4), métiers (5), avis parents (6) et export (7).
+ * Documentation wiki : docs/wiki/design-system.md#results
+ */
+
+/* Écran 4 - Radar */
+.chart-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.chart-wrapper {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  min-height: 330px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scores-summary h3 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; }
+.score-bars-list { display: flex; flex-direction: column; gap: 10px; }
+.score-bar-item { display: flex; flex-direction: column; gap: 4px; }
+.score-bar-info { display: flex; justify-content: space-between; font-size: 0.85rem; }
+.score-track { height: 8px; background: var(--bg-subtle); border-radius: var(--radius-full); overflow: hidden; }
+.score-fill { height: 100%; border-radius: var(--radius-full); transition: width 0.5s ease; }
+
+/* Écran 5 - Métiers */
+.profile-code-card {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(236, 72, 153, 0.08));
+  border: 1px solid rgba(79, 70, 229, 0.15);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.code-badges { display: flex; gap: 8px; margin-bottom: 10px; }
+.code-badge-large { padding: 4px 12px; border-radius: var(--radius-full); font-weight: 800; font-size: 0.85rem; color: #fff; }
+.qualitative-text { font-size: 1rem; font-weight: 600; }
+.metiers-cards-list { display: flex; flex-direction: column; gap: 12px; }
+
+.metier-card {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.metier-name { font-size: 0.98rem; font-weight: 700; }
+.metier-opinion-buttons { display: flex; gap: 6px; }
+
+.btn-opinion {
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+  background: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-opinion.selected { color: #fff; }
+.btn-opinion.selected:nth-child(1) { background: #10b981; border-color: #10b981; }
+.btn-opinion.selected:nth-child(2) { background: #f59e0b; border-color: #f59e0b; }
+.btn-opinion.selected:nth-child(3) { background: #64748b; border-color: #64748b; }
+
+/* Écran 6 - Avis Parents */
+.parent-form-grid { display: flex; flex-direction: column; gap: 18px; }
+.parent-field {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.parent-label { font-size: 0.92rem; font-weight: 700; }
+.sub-label { font-size: 0.82rem; color: var(--text-muted); font-weight: 600; }
+.instruction-highlight {
+  background: var(--primary-subtle);
+  border-left: 4px solid var(--primary);
+  padding: 12px 14px;
+  font-weight: 500;
+  color: var(--primary-hover);
+}
+
+.radio-pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill-radio input { position: absolute; opacity: 0; pointer-events: none; }
+.pill-radio span {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: #fff;
+  border: 1px solid var(--border-subtle);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.pill-radio input:checked + span { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+/* Écran 7 - Export */
+.export-summary-card {
+  background: var(--bg-subtle);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+}
+.student-name-display { font-size: 1.3rem; font-weight: 800; display: block; }
+.student-class-display { font-size: 0.88rem; color: var(--text-muted); font-weight: 600; }
+.summary-code-display {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: var(--primary);
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: var(--radius-sm);
+}
+
+.summary-details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.summary-box h4 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+.summary-list { list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 0.92rem; font-weight: 600; }
+.summary-text-muted { font-size: 0.88rem; color: var(--text-muted); }
+
+.download-cta-zone { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 18px 0; }
+.btn-download {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  border: none;
+  padding: 14px 24px;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+}
+.btn-download strong { display: block; font-size: 1.05rem; }
+.btn-download small { font-size: 0.78rem; opacity: 0.9; }
+.btn-icon-large { width: 28px; height: 28px; }
+
+.download-success-msg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.download-success-msg svg { width: 18px; height: 18px; }
+
+@media (max-width: 768px) {
+  .chart-layout, .summary-details-grid { grid-template-columns: 1fr; }
+  .metier-card { flex-direction: column; align-items: flex-start; }
+}

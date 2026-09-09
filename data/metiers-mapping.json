@@ -1,0 +1,84 @@
+{
+  "mappings": [
+    {
+      "code": "RI",
+      "synthese": "Ton profil dominant Réaliste-Investigateur met en valeur la technique concrète combinée à l'analyse rigoureuse.",
+      "metiers": ["Ingénieur mécanique / mécatronique", "Technicien de laboratoire", "Développeur de systèmes embarqués"]
+    },
+    {
+      "code": "RA",
+      "synthese": "Ton profil dominant Réaliste-Artistique combine le sens pratique de la matière et la créativité manuelle.",
+      "metiers": ["Architecte d'intérieur / Ébéniste", "Designer industriel", "Paysagiste / Créateur d'espaces"]
+    },
+    {
+      "code": "RS",
+      "synthese": "Ton profil dominant Réaliste-Social associe l'activité physique/concrète au service et à l'aide aux personnes.",
+      "metiers": ["Kinésithérapeute / Ergothérapeute", "Éducateur sportif", "Pompier / Secouriste"]
+    },
+    {
+      "code": "RE",
+      "synthese": "Ton profil dominant Réaliste-Entreprenant lie la réalisation technique et le sens du projet ou de la coordination.",
+      "metiers": ["Conducteur de travaux", "Ingénieur logistique", "Entrepreneur du bâtiment / Artisan chef d'entreprise"]
+    },
+    {
+      "code": "RC",
+      "synthese": "Ton profil dominant Réaliste-Conventionnel valorise la rigueur, le respect des normes et le travail concret.",
+      "metiers": ["Technicien de maintenance", "Contrôleur qualité industrielle", "Géomètre / Topographe"]
+    },
+    {
+      "code": "IA",
+      "synthese": "Ton profil dominant Investigateur-Artistique conjugue la recherche intellectuelle profonde et l'imagination originale.",
+      "metiers": ["Concepteur de jeux vidéo / Game Designer", "Chercheur en sciences cognitives / UX Researcher", "Scénariste / Rédacteur scientifique"]
+    },
+    {
+      "code": "IS",
+      "synthese": "Ton profil dominant Investigateur-Social met la réflexion et les connaissances au service du bien-être et de l'apprentissage.",
+      "metiers": ["Médecin / Professionnel de santé", "Psychologue clinicien", "Enseignant-chercheur"]
+    },
+    {
+      "code": "IE",
+      "synthese": "Ton profil dominant Investigateur-Entreprenant allie l'analyse prospective pointue à la vision stratégique et décisionnelle.",
+      "metiers": ["Data Analyst / Data Scientist", "Consultant en stratégie ou innovation", "Chef de produit technologique"]
+    },
+    {
+      "code": "IC",
+      "synthese": "Ton profil dominant Investigateur-Conventionnel excelle dans la gestion méthodique des données, chiffres et systèmes complexes.",
+      "metiers": ["Analyste financier / Actuaire", "Expert en cybersécurité / Audit", "Statisticien / Bio-informaticien"]
+    },
+    {
+      "code": "AS",
+      "synthese": "Ton profil dominant Artistique-Social privilégie l'expression créative, l'écoute humaine et la communication.",
+      "metiers": ["Médiateur culturel / Animateur d'ateliers", "Art-thérapeute", "Graphiste / Directeur artistique pour causes sociales"]
+    },
+    {
+      "code": "AE",
+      "synthese": "Ton profil dominant Artistique-Entreprenant associe l'inventivité créative à la communication de projet et à l'influence.",
+      "metiers": ["Directeur artistique en agence / Publicité", "Producteur audiovisuel / Événementiel", "Architecte / Designer d'expériences"]
+    },
+    {
+      "code": "AC",
+      "synthese": "Ton profil dominant Artistique-Conventionnel marie le sens visuel esthétique avec l'ordre, la précision et la mise en page soignée.",
+      "metiers": ["Webdesigner / Intégrateur UI", "Éditeur / Maquettiste PAO", "Conservateur / Documentaliste spécialisé"]
+    },
+    {
+      "code": "SE",
+      "synthese": "Ton profil dominant Social-Entreprenant combine un fort relationnel humain et l'animation dynamique d'équipes ou de projets.",
+      "metiers": ["Responsable Ressources Humaines", "Manager d'équipe dans l'économie sociale / ONG", "Conseiller en insertion professionnelle"]
+    },
+    {
+      "code": "SC",
+      "synthese": "Ton profil dominant Social-Conventionnel lie le dévouement aux usagers à une organisation administrative irréprochable.",
+      "metiers": ["Gestionnaire d'établissement scolaire ou de santé", "Assistant social / Conseiller médico-social", "Coordinateur pédagogique"]
+    },
+    {
+      "code": "EC",
+      "synthese": "Ton profil dominant Entreprenant-Conventionnel favorise le pilotage d'activité, la négociation et la gestion rigoureuse d'organisations.",
+      "metiers": ["Juriste d'entreprise / Notaire", "Directeur d'agence bancaire ou commerciale", "Auditeur de gestion / Contrôleur financier"]
+    }
+  ],
+  "default_metiers": [
+    "Chef de projet polyvalent",
+    "Médiateur / Coordinateur de projet",
+    "Chargé de communication et d'organisation"
+  ]
+}

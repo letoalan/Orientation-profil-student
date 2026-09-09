@@ -1,0 +1,46 @@
+{
+  "poles": {
+    "realiste": {
+      "nom": "Réaliste",
+      "code": "R",
+      "couleur": "#2563EB",
+      "description": "Pratique, concret, manuel, aime manipuler des objets, outils ou être en extérieur.",
+      "mots_cles": ["Concret", "Technique", "Action", "Sport", "Nature"]
+    },
+    "investigateur": {
+      "nom": "Investigateur",
+      "code": "I",
+      "couleur": "#7C3AED",
+      "description": "Curieux, logique, analytique, aime comprendre les mécanismes et résoudre des énigmes.",
+      "mots_cles": ["Science", "Analyse", "Logique", "Recherche", "Savoir"]
+    },
+    "artistique": {
+      "nom": "Artistique",
+      "code": "A",
+      "couleur": "#EC4899",
+      "description": "Créatif, intuitif, expressif, aime concevoir, inventer et imaginer librement.",
+      "mots_cles": ["Création", "Design", "Imagination", "Expression", "Esthétique"]
+    },
+    "social": {
+      "nom": "Social",
+      "code": "S",
+      "couleur": "#10B981",
+      "description": "Empathique, communicant, attentif aux autres, aime enseigner, aider ou soigner.",
+      "mots_cles": ["Aide", "Écoute", "Transmission", "Relation", "Entraide"]
+    },
+    "entreprenant": {
+      "nom": "Entreprenant",
+      "code": "E",
+      "couleur": "#F59E0B",
+      "description": "Leader, persuasif, dynamique, aime initier des projets, négocier et convaincre.",
+      "mots_cles": ["Projet", "Leadership", "Négociation", "Stratégie", "Action"]
+    },
+    "conventionnel": {
+      "nom": "Conventionnel",
+      "code": "C",
+      "couleur": "#06B6D4",
+      "description": "Organisé, méthodique, rigoureux, aime les démarches structurées et la précision.",
+      "mots_cles": ["Organisation", "Méthode", "Rigueur", "Chiffres", "Précision"]
+    }
+  }
+}
