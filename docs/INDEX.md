@@ -41,17 +41,18 @@ Orientation-profil-student/
 │   └── main.js                       # Initialisation & événements DOM (110 lignes)
 │
 ├── css/                              # Modules CSS
-│   ├── variables.css                 # Tokens de couleur & design (56 lignes)
-│   ├── layout.css                    # Mise en page, stepper & boutons (187 lignes)
-│   ├── screens-1-3.css               # Formulaires écrans 1, 2 et 3 (177 lignes)
-│   └── screens-4-7.css               # Radar, cartes métiers, parents, export (163 lignes)
+│   ├── variables.css                 # Tokens de couleur & design (82 lignes)
+│   ├── layout.css                    # Mise en page, stepper & boutons (212 lignes)
+│   ├── screens-1-3.css               # Formulaires écrans 1, 2 et 3 (199 lignes)
+│   ├── screens-4-7.css               # Radar, cartes métiers, parents, export (178 lignes)
+│   └── responsive-mobile.css         # Compatibilité smartphones & safe-areas (119 lignes)
 │
 ├── data/                             # Référentiels statiques
 │   ├── poles-definitions.json        # Définitions des 6 pôles
 │   └── metiers-mapping.json          # Correspondance combinaisons -> métiers
 │
-├── index.html                        # SPA 7 écrans (187 lignes)
-├── style.css                         # Import centralisateur CSS (9 lignes)
+├── index.html                        # SPA 7 écrans (200 lignes)
+├── style.css                         # Import centralisateur CSS (11 lignes)
 ├── profil.md                         # Spécification initiale
 └── README.md                         # Guide de mise en ligne GitHub Pages
 ```

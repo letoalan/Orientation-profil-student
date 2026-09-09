@@ -1,0 +1,118 @@
+﻿/**
+ * @file responsive-mobile.css
+ * @description Optimisations mobiles avancées, safe-areas, ergonomie tactile WCAG (44px)
+ * et adaptation responsive des 7 écrans pour smartphones (iOS/Android).
+ * Documentation wiki : docs/wiki/design-system.md#responsive-mobile
+ */
+
+@media (max-width: 768px) {
+  /* Conteneur & safe-areas */
+  .app-container {
+    padding: 12px 12px calc(24px + var(--safe-bottom));
+    padding-left: max(12px, var(--safe-left));
+    padding-right: max(12px, var(--safe-right));
+    gap: 16px;
+  }
+
+  /* Header compact */
+  .app-header {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+  .brand { gap: 10px; }
+  .brand-text h1 { font-size: 1.05rem; }
+  .subtitle { font-size: 0.78rem; }
+  .badge-mode { font-size: 0.7rem; padding: 3px 8px; }
+
+  /* Stepper tactile scrollable */
+  .stepper-nav { padding: 10px 12px; overflow: hidden; }
+  .steps-indicators {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    gap: 6px;
+  }
+  .steps-indicators::-webkit-scrollbar { display: none; }
+  .step-indicator {
+    scroll-snap-align: center;
+    padding: 6px 10px;
+    font-size: 0.76rem;
+    min-height: var(--touch-target-min);
+  }
+
+  /* Carte & Écrans */
+  .main-card { padding: 20px 14px; border-radius: var(--radius-md); min-height: auto; }
+  .screen-header h2 { font-size: 1.25rem; }
+  .screen-header .description { font-size: 0.88rem; }
+
+  /* Prévention du zoom forcé iOS (min font-size 16px) */
+  input[type="text"], input[type="number"], textarea, select {
+    font-size: 16px !important;
+  }
+
+  /* Actions ergonomiques au pouce */
+  .screen-actions {
+    margin-top: 24px;
+    padding-top: 16px;
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+  .screen-actions .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: var(--touch-target-min);
+    font-size: 1rem;
+    padding: 12px 16px;
+  }
+  .screen-actions > div:empty { display: none; }
+
+  /* Écran 1 */
+  .form-grid { grid-template-columns: 1fr; gap: 14px; }
+  .input-group.full-width { grid-column: span 1; }
+
+  /* Écran 2 */
+  .poles-input-grid { grid-template-columns: 1fr; gap: 12px; }
+  .pole-card { padding: 14px; gap: 12px; }
+  .stepper-counter { padding: 4px; gap: 12px; }
+  .stepper-counter button {
+    width: 44px; height: 44px; min-width: 44px; min-height: 44px;
+    font-size: 1.4rem; user-select: none; -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  .stepper-counter input { width: 50px; font-size: 1.3rem; }
+
+  /* Écran 3 */
+  .scale-legend { flex-direction: column; gap: 4px; font-size: 0.74rem; padding: 8px 12px; }
+  .question-row { flex-direction: column; align-items: stretch; padding: 14px; gap: 12px; }
+  .scale-options { width: 100%; display: flex; justify-content: space-between; gap: 6px; }
+  .scale-option { flex: 1; }
+  .scale-option label {
+    width: 100%; min-height: 44px; height: 44px; font-size: 1.05rem;
+    user-select: none; -webkit-user-select: none; touch-action: manipulation;
+  }
+
+  /* Écran 4 */
+  .chart-layout { grid-template-columns: 1fr; gap: 18px; }
+  .chart-wrapper { min-height: 270px; height: 270px; padding: 8px; }
+
+  /* Écran 5 */
+  .metier-card { flex-direction: column; align-items: stretch; gap: 12px; padding: 14px; }
+  .metier-opinion-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%; }
+  .btn-opinion {
+    min-height: 40px; display: flex; align-items: center; justify-content: center;
+    padding: 8px 4px; font-size: 0.8rem; user-select: none; -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  /* Écran 6 & 7 */
+  .radio-pill-group { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .pill-radio span {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 40px; user-select: none; -webkit-user-select: none;
+  }
+  .summary-details-grid { grid-template-columns: 1fr; gap: 14px; }
+  .btn-download { width: 100%; justify-content: center; padding: 16px; min-height: 52px; }
+}

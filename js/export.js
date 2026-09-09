@@ -47,14 +47,37 @@ export function buildExportPayload() {
   };
 }
 
+/**
+ * Nettoie et translittère une chaîne pour un nom de fichier ASCII sécurisé
+ * (ex: 'Éléonore' -> 'eleonore', 'François' -> 'francois')
+ */
+function sanitizeForFilename(str, fallback = 'inconnu') {
+  if (!str) return fallback;
+  return str
+    .trim()
+    .normalize('NFD') // Décompose les accents (é -> e +  ́)
+    .replace(/[\u0300-\u036f]/g, '') // Supprime les diacritiques
+    .replace(/œ/g, 'oe')
+    .replace(/æ/g, 'ae')
+    .replace(/ç/g, 'c')
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]/g, '_')
+    .replace(/_+/g, '_')
+    .replace(/^_|_$/g, '') || fallback;
+}
+
 export function downloadJsonFile() {
   const payload = buildExportPayload();
+  // Sérialisation propre avec indentation
   const jsonStr = JSON.stringify(payload, null, 2);
-  const blob = new Blob([jsonStr], { type: 'application/json;charset=utf-8;' });
+
+  // Ajout du BOM UTF-8 (\uFEFF) pour garantir qu'Excel, Bloc-notes et tous les parseurs
+  // reconnaissent immédiatement et sans ambiguïté les caractères accentués français (é, è, ê, à, ç, œ, etc.)
+  const blob = new Blob(['\uFEFF' + jsonStr], { type: 'application/json;charset=utf-8;' });
   const url = URL.createObjectURL(blob);
 
-  const cleanNom = state.identite.nom.toLowerCase().replace(/[^a-z0-9]/gi, '_') || 'eleve';
-  const cleanPrenom = state.identite.prenom.toLowerCase().replace(/[^a-z0-9]/gi, '_') || 'profil';
+  const cleanNom = sanitizeForFilename(state.identite.nom, 'eleve');
+  const cleanPrenom = sanitizeForFilename(state.identite.prenom, 'profil');
   const filename = `${cleanNom}_${cleanPrenom}_profil.json`;
 
   const link = document.createElement('a');

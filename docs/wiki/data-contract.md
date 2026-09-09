@@ -77,6 +77,20 @@ Le schéma est strictement conforme aux spécifications de [profil.md](../../pro
     "inquietude": "Secteur sélectif.",
     "domaine_remarque": "Aisance pour expliquer les nouvelles technologies."
   },
-  "date_export": "2026-09-09T16:20:00.000Z"
-}
 ```
+
+---
+
+## 4. Prise en Charge des Caractères Spéciaux Français & Encodage
+
+L'application a été spécifiquement renforcée pour garantir la transmission sans corruption de tous les caractères de la langue française :
+
+1. **Normalisation Unicode NFC** :
+   - Toutes les entrées textuelles (`nom`, `prenom`, `classe`, `traits_percus`, `coherence_pourquoi`, `inquietude`, `domaine_remarque`) passent par la méthode `.normalize('NFC')`.
+   - Cela combine systématiquement les caractères de base et leurs accents en un unique point de code (ex: `é`, `è`, `ê`, `à`, `ç`, `œ`, `« », etc.).
+2. **Encodage UTF-8 avec BOM (`\uFEFF`)** :
+   - Le fichier JSON est généré sous forme de `Blob` avec l'entête standard UTF-8 et préfixé par le BOM (`\uFEFF`).
+   - Cela évite tout problème de mojibake (caractères déformés type `Ã©`) lors de l'ouverture sous Windows (Excel, Bloc-notes) ou de l'ingestion par un script Python / SQLite.
+3. **Nom de fichier sécurisé (Translittération ASCII)** :
+   - Le nom du fichier généré (`nom_prenom_profil.json`) est automatiquement nettoyé via décomposition NFD et suppression des diacritiques (ex: *Éléonore François* -> `eleonore_francois_profil.json`) afin d'éviter tout blocage sur les systèmes de fichiers stricts.
+

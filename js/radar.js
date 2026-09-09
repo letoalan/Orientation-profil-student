@@ -61,7 +61,11 @@ export function renderRadarChart() {
           grid: { color: '#e2e8f0' },
           angleLines: { color: '#cbd5e1' },
           pointLabels: {
-            font: { size: 12, weight: '700', family: 'Plus Jakarta Sans' },
+            font: {
+              size: window.innerWidth < 480 ? 10 : 12,
+              weight: '700',
+              family: 'Plus Jakarta Sans'
+            },
             color: '#334155'
           }
         }

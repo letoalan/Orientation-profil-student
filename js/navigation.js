@@ -26,9 +26,14 @@ export function goToStep(stepNumber) {
   document.querySelectorAll('.step-indicator').forEach(ind => {
     const s = parseInt(ind.getAttribute('data-step'), 10);
     ind.classList.remove('active');
-    if (s === stepNumber) ind.classList.add('active');
-    else if (s < stepNumber) ind.classList.add('completed');
-    else ind.classList.remove('completed');
+    if (s === stepNumber) {
+      ind.classList.add('active');
+      ind.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    } else if (s < stepNumber) {
+      ind.classList.add('completed');
+    } else {
+      ind.classList.remove('completed');
+    }
   });
 
   const bar = document.getElementById('progressBar');
@@ -48,10 +53,20 @@ export function goToStep(stepNumber) {
   }
 }
 
+/**
+ * Normalise les chaînes de texte utilisateur sous la forme standard NFC.
+ * Préserve fidèlement tous les caractères français (é, è, ê, ë, à, â, î, ï, ô, ù, û, ü, ç, œ, æ, «, », etc.)
+ * tout en éliminant les espaces superflus et les séquences corrompues.
+ */
+function normalizeFrenchText(val) {
+  if (typeof val !== 'string') return '';
+  return val.trim().normalize('NFC');
+}
+
 function validateStep1() {
-  const nom = document.getElementById('input-nom')?.value.trim();
-  const prenom = document.getElementById('input-prenom')?.value.trim();
-  const classe = document.getElementById('input-classe')?.value.trim();
+  const nom = normalizeFrenchText(document.getElementById('input-nom')?.value);
+  const prenom = normalizeFrenchText(document.getElementById('input-prenom')?.value);
+  const classe = normalizeFrenchText(document.getElementById('input-classe')?.value);
 
   if (!nom || !prenom || !classe) {
     alert('Merci de renseigner ton nom, prénom et classe.');
@@ -83,11 +98,11 @@ function validateStep6() {
   const lienRadio = document.querySelector('input[name="parent_lien"]:checked');
   let lien = lienRadio ? lienRadio.value : 'Mère';
   if (lien === 'Autre') {
-    const detail = document.getElementById('parent-lien-autre')?.value.trim();
+    const detail = normalizeFrenchText(document.getElementById('parent-lien-autre')?.value);
     lien = detail ? `Autre (${detail})` : 'Autre proche';
   }
 
-  const traits = document.getElementById('parent-traits')?.value.trim();
+  const traits = normalizeFrenchText(document.getElementById('parent-traits')?.value);
   if (!traits) {
     alert('Merci d’indiquer les 2 traits de caractère décrits par tes proches.');
     return false;
@@ -97,9 +112,9 @@ function validateStep6() {
     lien,
     traits_percus: traits,
     coherence_projet: document.querySelector('input[name="parent_coherence"]:checked')?.value || 'oui',
-    coherence_pourquoi: document.getElementById('parent-coherence-pourquoi')?.value.trim() || '',
-    inquietude: document.getElementById('parent-inquietude')?.value.trim() || '',
-    domaine_remarque: document.getElementById('parent-domaine')?.value.trim() || ''
+    coherence_pourquoi: normalizeFrenchText(document.getElementById('parent-coherence-pourquoi')?.value),
+    inquietude: normalizeFrenchText(document.getElementById('parent-inquietude')?.value),
+    domaine_remarque: normalizeFrenchText(document.getElementById('parent-domaine')?.value)
   };
   return true;
 }

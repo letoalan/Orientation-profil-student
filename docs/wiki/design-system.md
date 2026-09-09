@@ -51,11 +51,20 @@ Styles pour la phase de restitution et conclusion :
 - Écran 6 : Formulaire d'avis parents `.parent-form-grid` et puces sélectionnables `.radio-pill-group`.
 - Écran 7 : Fiche récapitulative `.export-summary-card` et gros bouton de téléchargement `.btn-download`.
 
-### `style.css` (9 lignes)
+### `responsive-mobile.css` (~119 lignes)
+Module dédié à la compatibilité totale smartphones (iOS/Android) :
+- Prise en charge des safe-areas (`env(safe-area-inset-*)` pour iPhone à encoche/Dynamic Island).
+- Stepper horizontal tactile défilant sans barre disgracieuse avec centrage automatique.
+- Cibles tactiles conformes WCAG d'au moins 44×44px sur les boutons (+/−, Likert 1-5, opinions).
+- Règle `font-size: 16px` sur tous les champs de saisie pour supprimer le zoom forcé d'iOS Safari.
+- Passage en disposition empilée (1 colonne) pour tous les formulaires et le radar RIASEC.
+
+### `style.css` (11 lignes)
 Point d'assemblage unique importé dans `index.html` :
 ```css
 @import './css/variables.css';
 @import './css/layout.css';
 @import './css/screens-1-3.css';
 @import './css/screens-4-7.css';
+@import './css/responsive-mobile.css';
 ```
